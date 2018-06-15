@@ -25,11 +25,14 @@ function sumBigNumbers($num1, $num2)
         $part = (int)($sum / 10);
     }
 
-    foreach (range($len1, $len2 - 1) as $index) {
-        $sum = (int)$num2[$index] + $part;
+    if ($len1 < $len2) {
 
-        $result[] = (int)($sum % 10);
-        $part = (int)($sum / 10);
+        foreach (range($len1, $len2 - 1) as $index) {
+            $sum = (int)$num2[$index] + $part;
+
+            $result[] = (int)($sum % 10);
+            $part = (int)($sum / 10);
+        }
     }
 
     if ($part > 0) {
